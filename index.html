@@ -2,87 +2,171 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PRoject !</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-        
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-
-    </head>
-    <body>
- 
-
-
-        <nav>
-            <div class="nav-wrapper">
-              <a href="" class="brand-logo">Food Recepies </a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="">sass</a></li>
-                <li><a href="">sass <span class="new badge">4</span></a></li>
-                <li><a href="">sass</a></li>
-              </ul>
-            </div>
-          </nav>
-
-          
-  <nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-  </nav>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PRoject !</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
 
 
 
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
- 
+<body>
+  <!-- logo and links -->
+  <div class="container">
+    <nav>
+      <div class="nav-wrapper red">
+        <a href="#!" class="brand-logo">Food Finder</a>
 
-
-  <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Recepie<i class="material-icons right">more_vert</i></span>
-      <p><a href="#">This is a link</a></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-<h1>Required Ingredients</h1>
-
-      <p>Eggs</p>    
-      <p>Milk</p> 
-      <p>Onions</p> 
-      <p>Mango</p> 
-      <p>Berries</p> 
-      <p>Pineapple</p> 
-      <div class="video-container">
-        <iframe width="853" height="480" src="https://www.youtube.com/watch?v=FTociictyyE" frameborder="0" allowfullscreen></iframe>
       </div>
-   
+    </nav>
+    <!-- Search bar  -->
+    <nav>
+        <div class="nav-wrapper red">
+          <form>
+            <div class="input-field">
+              <!-- Search bar ID -->
+              <input id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+      <!-- Search bar -->
+    
+  </div>
+  <!-- card for recepie -->
+
+  <div class="container">
+    <div class="card ">
+      <!-- image div -->
+      <div class="card-image">
+        <!-- image link -->
+        <img
+          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+
+        <!--  -->
+        <h1 class="card-title red">Needed Ingredients</h1>
+  
+      
+
+        <!-- add to cart button -->
+        <a class="btn-floating halfway-fab waves-effect waves-light red"><i
+            class="large material-icons">add_shopping_cart</i></a>
+      </div>
+      <!-- ingredients Div -->
+      <div class="card-content">
+
+      
+       
+        <!-- creates a row and divides it into  two -->
+        <div class="row">
+
+          <!-- Left col -->
+          <div class="col s6">
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Onions</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Tomatoes</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Eggs</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Noodles</span>
+                </label>
+              </p>
+
+            </form>
+          </div>
+          <!-- Right col -->
+          <div class="col s6">
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Onions</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Tomatoes</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Eggs</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>Noodles</span>
+                </label>
+              </p>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+
     </div>
+  </div>
   </div>
 
 
- 
+  <div class="container">
 
-        <script src="" async defer></script>
-    </body>
+
+      <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="https://www.youtube.com/watch?v=ZJy1ajvMU1k">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+          
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+    
+          </div>
+        </div>
+
+
+  </div>
+
+</body>
+
 </html>

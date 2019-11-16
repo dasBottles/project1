@@ -14,3 +14,7 @@ $('#foodSearch').keyup(function(){
         console.log('event', event)
     }
 });
+
+$('#foodSearch').click(function(){
+    getRecipe();
+})

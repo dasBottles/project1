@@ -28,30 +28,42 @@
   <!-- icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!-- font -->
+  
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+
+  <style>
+  
+  body{
+font-family: 'Indie Flower', cursive;;
+
+  }
+  
+  </style>
 
 <body>
   <!-- logo and links -->
   <div class="container">
     <nav>
-      <div class="nav-wrapper #e1f5fe light-blue lighten-5">
+      <div class="nav-wrapper light-blue lighten-5">
         <a href="#! " class="brand-logo grey-text text-darken-4">Recipe Finder</a>
 
       </div>
     </nav>
     <!-- Search bar  -->
     <nav>
-        <div class="nav-wrapper #e1f5fe light-blue lighten-5">
-          <form>
+        <div class="nav-wrapper  light-blue lighten-5">
+          
             <div class="input-field">
               <!-- Search bar ID -->
 
 
               <input id="foodSearch" type="search" required>
-              <label class="label-icon" for="foodSearch"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-
+              <label  for="foodSearch"></label>
+              <i class="material-icons" id="search-btn">search</i>
+              
             </div>
-          </form>
+          
         </div>
       </nav>
       <!-- Search bar -->
@@ -68,12 +80,12 @@
           src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
 
         <!--  -->
-        <h1 class="card-title grey-text text-darken-4 #fff59d yellow lighten-3">Needed Ingredients</h1>
+        <h1 class="card-title grey-text text-darken-4  yellow lighten-3">Needed Ingredients</h1>
   
       
 
         <!-- add to cart button -->
-        <a class="btn-floating halfway-fab waves-effect waves-light #fff59d yellow lighten-3"><i
+        <a class="btn-floating halfway-fab waves-effect waves-light  yellow lighten-3"><i
             class="large material-icons grey-text text-darken-4">add_shopping_cart</i></a>
       </div>
       <!-- ingredients Div -->
@@ -186,6 +198,53 @@
 
 
   </div>
+
+
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="First Name" id="first_name" type="text" class="validate">
+              <label for="first_name">Full Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+      
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+          <button>Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+
+</div>
+
 
 </body>
 

@@ -8,9 +8,10 @@ let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + se
     })
 };
 
-$('#foodSearch').keyup(function(event){
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        console.log('test test 1 2 3 ');
-    }
+
+
+$(document).ready(() => {
+    $("#search-btn").on("click", function() {
+        console.log('value', $("#foodSearch").val().trim())
+    })
 })

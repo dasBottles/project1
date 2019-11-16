@@ -11,6 +11,11 @@ let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + se
 
 
 $(document).ready(() => {
+    $('#foodSearch').keyup(function(){
+        if (event.keyCode === 13) {
+            console.log('value', $("#foodSearch").val().trim()) 
+        }
+    })
     $("#search-btn").on("click", function() {
         console.log('value', $("#foodSearch").val().trim())
     })

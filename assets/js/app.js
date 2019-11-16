@@ -1,32 +1,41 @@
 const getRecipe = () => {
 
-let searchInput = $("#foodSearch").val().trim();
+    let searchInput = $("#foodSearch").val().trim();
 
-let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=77fce6bcdb4442558b5fc882a707acbc");
-    xhr.done(function(response) { 
-            console.log("success got data", response); 
-            let 
+    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=8613c8f2619d45889d1bdf4d6db0c2a0");
+    xhr.done(function (response) {
+        console.log("success got data", response);
+        let
             recipeTitle = response.recipes[0].title;
-            recipeImg = response.recipes[0].image;
-            recipeServings = response.recipes[0].servings
-            recipeTime = response.recipes[0].readyInMinutes;
-            recipeIngredients = response.recipes[0].extendedIngredients;
-            recipeInstructions = response.recipes[0].analyzedInstructions;
-            $('#recipeName').text(recipeTitle);
-            $('#recipeImg').attr('src', recipeImg);
-            console.log(recipeTitle);
-        })
-    };
+        recipeImg = response.recipes[0].image;
+        recipeServings = response.recipes[0].servings
+        recipeTime = response.recipes[0].readyInMinutes;
+        recipeIngredients = response.recipes[0].extendedIngredients;
+        recipeInstructions = response.recipes[0].analyzedInstructions;
+        $('#recipeName').text(recipeTitle);
+        $('#recipeImg').attr('src', recipeImg);
+        console.log(recipeTitle);
+        listIngredients(recipeIngredients);
+    })
+};
+
+function listIngredients(ingredients) {
+    ingredients.forEach(element => {
+        let item = element.name
+        let list = $("#ingredients-list")
+            list.append("<p><label><input type='checkbox'/><span>" + item );
     
-    
+    });
+}
+
 $(document).ready(() => {
-    $('#foodSearch').keyup(function(){
+    $('#foodSearch').keyup(function () {
         if (event.keyCode === 13) {
             console.log('value', $("#foodSearch").val().trim())
-            getRecipe(); 
+            getRecipe();
         }
     })
-    $("#search-btn").on("click", function() {
+    $("#search-btn").on("click", function () {
         console.log('value', $("#foodSearch").val().trim())
         getRecipe()
     })

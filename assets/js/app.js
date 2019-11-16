@@ -1,5 +1,4 @@
 const getRecipe = () => {
-    event.preventDefault;
 
 let searchInput = $("#foodSearch").val().trim();
 
@@ -9,3 +8,9 @@ let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + se
     })
 };
 
+$('#foodSearch').keyup(function(){
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        console.log('test test 1 2 3 ');
+    }
+})

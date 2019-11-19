@@ -9,167 +9,276 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PRoject !</title>
+  <title>Project !</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
 
-  <!-- icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body class="light-blue lighten-5">
 
-  <!-- font -->
-  
-  <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
 
-<body>
-  <!-- logo and links -->
+  <!-- logo and links container -->
   <div class="container">
-    <nav>
-      <div class="nav-wrapper light-blue lighten-5">
-        <a href="#! " class="brand-logo grey-text text-darken-4">Recipe Finder</a>
 
+    <!-- logo nav -->
+    <nav>
+
+      <div class="nav-wrapper yellow lighten-3">
+        <!-- tittle -->
+        <a class="brand-logo center grey-text text-darken-4">Recipe Finder</a>
+        <!-- menu on desktop -->
+        <ul class="left hide-on-med-and-down">
+
+          <li> <a class="black-text" id="one" href="#!">Sign in</a> </li>
+         
+
+
+
+
+        </ul>
+        <!-- side menu bar for mobible -->
+        <a href="#!" class="sidenav-trigger left" data-target="mobile-links">
+
+          <i class="large material-icons grey-text text-darken-4 right">menu</i>
+        </a>
       </div>
     </nav>
-    <!-- Search bar  -->
-    <nav>
-        <div class="nav-wrapper  light-blue lighten-5">
-          
-            <div class="input-field">
-              <!-- Search bar ID -->
 
 
-              <input id="foodSearch" type="search" required>
-              <label  for="foodSearch"></label>
-              <i class="material-icons" id="search-btn">search</i>
-              
-            </div>
-          
-        </div>
-      </nav>
-      <!-- Search bar -->
-    
-  </div>
-  <!-- card for recepie -->
 
-  <div class="container">
-    <div class="card ">
-      <!-- image div -->
-      <div  class="card-image">
-        <!-- image link -->
-        <img id= 'recipeImg'
-          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-
-        <!--  -->
-        <h1 id= 'recipeName' class="card-title grey-text text-darken-4  yellow lighten-3"></h1>
   
+
+
+    <!-- mobile slide down nav only  -->
+
+    <ul class="sidenav" id="mobile-links">
+      <!-- when this is click  -->
+      <li> <a id="sign-in-mobile" class="black-text yellow lighten-3" href="#!">Sign In<i class="material-icons">person</i></a>
+      </li>
+
+      <!-- this will be shown -->
       
-
-        <!-- add to cart button -->
-        <a class="btn-floating halfway-fab waves-effect waves-light  yellow lighten-3"><i
-            class="large material-icons grey-text text-darken-4">add_shopping_cart</i></a>
-      </div>
-      <!-- ingredients Div -->
-      <div class="card-content">
-
-      
-       
-        <!-- creates a row and divides it into  two -->
-        <div class="row">
-          <!-- Right col -->
-          <div class="col s12">
-            <form id="ingredients-list" action="#">
-              
-
-            </form>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-  </div>
-
-
-  <div class="container">
-
-
-      <div class="card">
-          <div class="card-image waves-effect waves-block waves-light">
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">Recipe<i class="material-icons right"></i></span>
-          
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">recipe goes here<i class="material-icons right">close</i></span>
-    
-          </div>
-        </div>
-
-
-
-  </div>
-
-
-
-<div class="container">
-
-  <div class="card">
-
-    <div class="row">
-        <form class="col s12">
+        <div id="sing-in-sliding-form" class="sliding-form">
           <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="First Name" id="first_name" type="text" class="validate">
-              <label for="first_name">Full Name</label>
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
+            <!-- Password ID -->
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+              <button class="btn waves-effect waves-light black-text yellow lighten-3" type="submit" name="action">Sign in
+                  <i class="material-icons right ">send</i>
+                </button>
+                <br>
+                <br>
+            
+                  <li>
+                      <a id="sign-up-mobile" class="black-text yellow lighten-3" href="#!">Sign up<i class="material-icons">person_add</i></a>
+                    </li>
             </div>
+
           </div>
-      
+        </div>
+
+     
+
+      <div id="sliding-form" class="sliding-form">
+          <li>
+              <a id="sign-up-mobile" class="black-text yellow lighten-3" href="#!">Sign up<i class="material-icons">person_add</i></a>
+            </li>
+        <div class="row">
+          <!-- first name ID -->
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
           </div>
+          <!-- last name ID -->
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        
+        </div>
+
+
+
+        <!-- Email ID -->
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+          <!-- Password ID -->
           <div class="row">
             <div class="input-field col s12">
               <input id="password" type="password" class="validate">
               <label for="password">Password</label>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
+
+        </div>
+
+
+        <button class="btn waves-effect waves-light black-text yellow lighten-3" type="submit" name="action">Submit
+          <i class="material-icons right ">arrow_forward</i>
+        </button>
+
+      </div>
+
+    </ul>
+
+
+
+
+    <!-- Search bar  nav -->
+    <nav>
+      <div class="nav-wrapper  yellow lighten-3">
+
+        <div class="input-field">
+
+
+          <!-- Search bar ID -->
+          <input id="foodSearch" type="search" required>
+          <label for="foodSearch"></label>
+          <i class="material-icons grey-text text-darken-4" id="search-btn">search</i>
+
+        </div>
+
+      </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+  </div>
+  <!-- card for recepie -->
+
+  <div class="container">
+    <div class="card ">
+      <!-- image div -->
+      <div class="card-image">
+        <!-- image link -->
+        <img id='recipeImg'
+          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+
+        <!-- Tittle of dish -->
+        <h1 id='recipeName' class="card-title grey-text text-darken-4  yellow lighten-3"></h1>
+
+
+
+        <!-- add to cart button -->
+        <a class="btn-floating halfway-fab waves-effect waves-light  yellow lighten-3"><i
+            class="large material-icons grey-text text-darken-4" id="basket">add_shopping_cart</i></a>
+      </div>
+      <!-- ingredients Div -->
+      <div class="card-content light-blue lighten-5 ">
+
+
+
+        <!-- creates a row and divides it into  two -->
+        <div class="row">
+          <!-- Right col -->
+          <div class="col s12 ">
+            <h4>Needed ingredients</h4>
+            <form id="ingredients-list" action="#">
+
+
+            </form>
+
           </div>
-          <div class="row">
-            <div class="col s12">
-          <button>Submit</button>
-              </div>
-            </div>
+
+          <!-- Div for steps -->
+          <div class="col s12">
+            <h4>Steps</h4>
+
+            <form action="#">
+
+              <!--  div to append ingredients  -->
+              <h5 id="ingredients-steps">
+                <P>1. Boil water in a large pot
+                  To make sure pasta doesn’t stick together, use at least 4 quarts of water for every pound of noodles.
+                </P>
+
+                <p>2. Salt the water with at least a tablespoon—more is fine
+                  The salty water adds flavor to the pasta.</p>
+
+                <p>3. Add pasta
+                  Pour pasta into boiling water. Don’t break the pasta; it will soften up within 30 seconds and fit into
+                  the pot</p>
+
+              </h5>
+
+            </form>
+
           </div>
-        </form>
+
+
+
+
+
+
+
+        </div>
+
+
+
       </div>
 
 
     </div>
+  </div>
+  </div>
 
-</div>
+
+
+
+
+
+  <!--  -->
 
 
 </body>
 
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="assets/js/app.js"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/shoppinglist.js"></script>
+    <script async="true" src="https://cdn.whisk.com/sdk/shopping-list.js" type="text/javascript"></script>
     </body>
+
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- font -->
+
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+
+
+</body>
+
 
 </html>

@@ -1,8 +1,8 @@
 let recipeIngredients;
 let shoppingBasket = [];
+let searchInput = $("#foodSearch").val().trim();
 const getRecipe = () => {
 
-    let searchInput = $("#foodSearch").val().trim();
 
     let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=8613c8f2619d45889d1bdf4d6db0c2a0");
     xhr.done(function (response) {
@@ -16,16 +16,18 @@ const getRecipe = () => {
         recipeInstructions = response.recipes[0].analyzedInstructions;
         $('#recipeName').text(recipeTitle);
         $('#recipeImg').attr('src', recipeImg);
+        $('#recipeCard').css('display', 'block');
         console.log(recipeTitle);
         listIngredients(recipeIngredients);
     })
 };
 
 function listIngredients(ingredients) {
+    let list = $("#ingredients-list")
+    list.empty();
     ingredients.forEach(element => {
         let item = [element.name, element.original]
         console.log(item)
-        let list = $("#ingredients-list")
             list.append("<p><label><input type='checkbox' class='add-item' data-item='" + item[0] +  "'/><span>" + item[0] );
     });
 }
@@ -53,6 +55,7 @@ $(document).ready(() => {
 $('#logoBtn').on("click", function(){
     event.preventDefault();
     $('#recipeCard').css("display", "none")
+    $('.input-field').empty();
 });
 
 const historyDisplay = $('#recipeHistoryDisplay');
@@ -98,17 +101,16 @@ const setupUI = (user) => {
         loggedInLinks.each((index,item) => {
             $(item).css('display', 'block');
         });
-        // loggedOutLinks.forEach(item => item.style.display = 'none');
+        loggedOutLinks.each((index, item) => {
+            $(item).css('display', 'none');
+        });
     } else {
-        // loggedInLinks.forEach(item => item.style.display = 'none');
         loggedOutLinks.each((index, item) => {
             $(item).css('display', 'block');
 
         loggedInLinks.each((index, item) => {
             $(item).css('display', 'none');
-    
         });
-
     })
     }
 }

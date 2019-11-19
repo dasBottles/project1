@@ -30,11 +30,9 @@ function listIngredients(ingredients) {
     });
 }
 
-function addToCart(list) {
-
-}
 
 $(document).ready(() => {
+    // Runs API calls
     $('#foodSearch').keyup(function () {
         if (event.keyCode === 13) {
             console.log('value', $("#foodSearch").val().trim())
@@ -45,8 +43,72 @@ $(document).ready(() => {
         console.log('value', $("#foodSearch").val().trim())
         getRecipe()
     })
-    
+    // Adds ingredients to shopping list
     $("#ingredients-list").on('click', '.add-item', function() {
         shoppingBasket.push($(this).data('item'))
     })
 })
+
+//Hides the recipe if logo is clicked
+$('#logoBtn').on("click", function(){
+    event.preventDefault();
+    $('#recipeCard').css("display", "none")
+});
+
+const historyDisplay = $('#recipeHistoryDisplay');
+// setup history
+const setupHistory = (data) => {
+    if (data.length) {
+        let html = '';
+        data.forEach(doc => {
+            const history = doc.data();
+            console.log(history);
+            const li = `
+            <li>
+                <div class="collapsible-header grey lighten-4"> ${history.title} </div>
+                <div class="collapsible-body white"> ${history.content} </div>        
+            </li>
+            `;
+            html += li;
+        });
+
+    historyDisplay.html(html);
+} else {
+    historyDisplay.html('<h5 class="center-align">Login to view your history</h5>')
+  }
+
+}
+// setup materialize components
+document.addEventListener('DOMContentLoaded', function() {
+
+  var modals = document.querySelectorAll('.modal');
+  M.Modal.init(modals);
+
+  var items = document.querySelectorAll('.collapsible');
+  M.Collapsible.init(items);
+
+});
+
+
+const loggedOutLinks = $('.logged-out');
+const loggedInLinks = $('.logged-in');
+
+const setupUI = (user) => {
+    if (user) {
+        loggedInLinks.each((index,item) => {
+            $(item).css('display', 'block');
+        });
+        // loggedOutLinks.forEach(item => item.style.display = 'none');
+    } else {
+        // loggedInLinks.forEach(item => item.style.display = 'none');
+        loggedOutLinks.each((index, item) => {
+            $(item).css('display', 'block');
+
+        loggedInLinks.each((index, item) => {
+            $(item).css('display', 'none');
+    
+        });
+
+    })
+    }
+}

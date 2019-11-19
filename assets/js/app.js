@@ -1,3 +1,5 @@
+let recipeIngredients;
+let shoppingBasket = [];
 const getRecipe = () => {
 
     let searchInput = $("#foodSearch").val().trim();
@@ -6,7 +8,7 @@ const getRecipe = () => {
     xhr.done(function (response) {
         console.log("success got data", response);
         let
-            recipeTitle = response.recipes[0].title;
+        recipeTitle = response.recipes[0].title;
         recipeImg = response.recipes[0].image;
         recipeServings = response.recipes[0].servings
         recipeTime = response.recipes[0].readyInMinutes;
@@ -21,11 +23,15 @@ const getRecipe = () => {
 
 function listIngredients(ingredients) {
     ingredients.forEach(element => {
-        let item = element.name
+        let item = [element.name, element.original]
+        console.log(item)
         let list = $("#ingredients-list")
-            list.append("<p><label><input type='checkbox'/><span>" + item );
-    
+            list.append("<p><label><input type='checkbox' class='add-item' data-item='" + item[0] +  "'/><span>" + item[0] );
     });
+}
+
+function addToCart(list) {
+
 }
 
 $(document).ready(() => {
@@ -38,5 +44,9 @@ $(document).ready(() => {
     $("#search-btn").on("click", function () {
         console.log('value', $("#foodSearch").val().trim())
         getRecipe()
+    })
+    
+    $("#ingredients-list").on('click', '.add-item', function() {
+        shoppingBasket.push($(this).data('item'))
     })
 })

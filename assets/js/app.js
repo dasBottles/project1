@@ -1,24 +1,34 @@
-let recipeIngredients;
-let shoppingBasket = [];
-let searchInput = $("#foodSearch").val().trim();
+let
+recipeIngredients;
+shoppingBasket = [];
+searchInput = $("#foodSearch").val().trim();
+
 const getRecipe = () => {
 
 
-    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=8613c8f2619d45889d1bdf4d6db0c2a0");
+    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=5cb11de15150498f89bc9b764d488ff9");
     xhr.done(function (response) {
-        console.log("success got data", response);
         let
         recipeTitle = response.recipes[0].title;
         recipeImg = response.recipes[0].image;
         recipeServings = response.recipes[0].servings
         recipeTime = response.recipes[0].readyInMinutes;
         recipeIngredients = response.recipes[0].extendedIngredients;
-        recipeInstructions = response.recipes[0].analyzedInstructions;
+        recipeInstructions = response.recipes[0].analyzedInstructions[0].steps[0].step;
+        console.log("success got data", response);
+
+        const parseInstructions = () => {
+            $(recipeInstructions).each((index, item) => {
+                $('#instructions').html("<li>" + item[0] + "</li>");
+            })
+        }
+
         $('#recipeName').text(recipeTitle);
         $('#recipeImg').attr('src', recipeImg);
         $('#recipeCard').css('display', 'block');
         console.log(recipeTitle);
         listIngredients(recipeIngredients);
+        parseInstructions(recipeInstructions);
     })
 };
 
@@ -114,3 +124,4 @@ const setupUI = (user) => {
     })
     }
 }
+

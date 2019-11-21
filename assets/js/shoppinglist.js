@@ -6,6 +6,5 @@ whisk.queue.push(function () {
         'basket',
         'shoppingList.addProductsToBasket', {
         products: shoppingBasket
-    }
-    );
+    });
 });

@@ -16,12 +16,9 @@ const getRecipe = () => {
         recipeIngredients = response.recipes[0].extendedIngredients;
         recipeInstructions = response.recipes[0].analyzedInstructions[0].steps[0].step;
         console.log("success got data", response);
+        console.log('recipeInstructions', recipeInstructions)
 
-        const parseInstructions = () => {
-            $(recipeInstructions).each((index, item) => {
-                $('#instructions').html("<li>" + item[0] + "</li>");
-            })
-        }
+
 
         $('#recipeName').text(recipeTitle);
         $('#recipeImg').attr('src', recipeImg);
@@ -31,6 +28,13 @@ const getRecipe = () => {
         parseInstructions(recipeInstructions);
     })
 };
+
+const parseInstructions = () => {
+    $(recipeInstructions).each((index, item) => {
+        $('#instructions').append("<li>" + item[0] + "</li>");
+        console.log(item)
+    })
+}
 
 function listIngredients(ingredients) {
     let list = $("#ingredients-list")
@@ -77,10 +81,12 @@ const setupHistory = (data) => {
             const history = doc.data();
             console.log(history);
             const li = `
-            <li>
-                <div class="collapsible-header grey lighten-4"> ${history.title} </div>
-                <div class="collapsible-body white"> ${history.content} </div>        
-            </li>
+            <ul class= 'collapsible'>
+                <li>
+                    <div class="collapsible-header grey lighten-4"> ${history.title} </div>
+                    <div class="collapsible-body white"> ${history.content} </div>        
+                </li>
+            </ul>
             `;
             html += li;
         });

@@ -1,31 +1,47 @@
-let recipeIngredients;
-let shoppingBasket = [];
+let
+recipeIngredients;
+shoppingBasket = [];
+searchInput = $("#foodSearch").val().trim();
+
 const getRecipe = () => {
 
-    let searchInput = $("#foodSearch").val().trim();
 
-    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=8613c8f2619d45889d1bdf4d6db0c2a0");
+    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=5cb11de15150498f89bc9b764d488ff9");
     xhr.done(function (response) {
-        console.log("success got data", response);
         let
         recipeTitle = response.recipes[0].title;
         recipeImg = response.recipes[0].image;
         recipeServings = response.recipes[0].servings
         recipeTime = response.recipes[0].readyInMinutes;
         recipeIngredients = response.recipes[0].extendedIngredients;
-        recipeInstructions = response.recipes[0].analyzedInstructions;
+        recipeInstructions = response.recipes[0].analyzedInstructions[0].steps[0].step;
+        console.log("success got data", response);
+        console.log('recipeInstructions', recipeInstructions)
+
+
+
         $('#recipeName').text(recipeTitle);
         $('#recipeImg').attr('src', recipeImg);
+        $('#recipeCard').css('display', 'block');
         console.log(recipeTitle);
         listIngredients(recipeIngredients);
+        parseInstructions(recipeInstructions);
     })
 };
 
+const parseInstructions = () => {
+    $(recipeInstructions).each((index, item) => {
+        $('#instructions').append("<li>" + item[0] + "</li>");
+        console.log(item)
+    })
+}
+
 function listIngredients(ingredients) {
+    let list = $("#ingredients-list")
+    list.empty();
     ingredients.forEach(element => {
         let item = [element.name, element.original]
         console.log(item)
-        let list = $("#ingredients-list")
             list.append("<p><label><input type='checkbox' class='add-item' data-item='" + item[0] +  "'/><span>" + item[0] );
     });
 }
@@ -53,6 +69,7 @@ $(document).ready(() => {
 $('#logoBtn').on("click", function(){
     event.preventDefault();
     $('#recipeCard').css("display", "none")
+    $('.input-field').empty();
 });
 
 const historyDisplay = $('#recipeHistoryDisplay');
@@ -64,10 +81,12 @@ const setupHistory = (data) => {
             const history = doc.data();
             console.log(history);
             const li = `
-            <li>
-                <div class="collapsible-header grey lighten-4"> ${history.title} </div>
-                <div class="collapsible-body white"> ${history.content} </div>        
-            </li>
+            <ul class= 'collapsible'>
+                <li>
+                    <div class="collapsible-header grey lighten-4"> ${history.title} </div>
+                    <div class="collapsible-body white"> ${history.content} </div>        
+                </li>
+            </ul>
             `;
             html += li;
         });
@@ -98,17 +117,17 @@ const setupUI = (user) => {
         loggedInLinks.each((index,item) => {
             $(item).css('display', 'block');
         });
-        // loggedOutLinks.forEach(item => item.style.display = 'none');
+        loggedOutLinks.each((index, item) => {
+            $(item).css('display', 'none');
+        });
     } else {
-        // loggedInLinks.forEach(item => item.style.display = 'none');
         loggedOutLinks.each((index, item) => {
             $(item).css('display', 'block');
 
         loggedInLinks.each((index, item) => {
             $(item).css('display', 'none');
-    
         });
-
     })
     }
 }
+

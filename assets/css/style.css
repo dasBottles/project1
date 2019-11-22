@@ -20,3 +20,7 @@ body {
   .botBorder {
     border-bottom: 2px solid gray;
   }
+#ingredients-list{
+    columns: 3;
+    
+}

@@ -97,6 +97,11 @@ const setupHistory = (data) => {
 
         });
 
+        db.collection('users').doc(cred.user.uid).set({
+            title: recipeTitle,
+            id: recipeId
+          });
+
     historyDisplay.html(html);
 } else {
     historyDisplay.html('<h5 class="center-align">Login to view your history</h5>')

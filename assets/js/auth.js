@@ -2,7 +2,7 @@
 auth.onAuthStateChanged(user => {
     if (user) {
       console.log('user logged in: ', user.email, user.uid);
-      db.collection('history').onSnapshot(snapshot => {
+      db.collection('history').where("userId", "==", firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         setupUI(user);
         setupHistory(snapshot.docs);
     });

@@ -15,10 +15,12 @@ const getRecipe = () => {
         recipeIngredients = response.recipes[0].extendedIngredients;
         recipeInstructions = response.recipes[0].analyzedInstructions[0].steps;
         // Saving recipe to database
+        const user = firebase.auth().currentUser;
         db.collection('history').add({
             title: recipeTitle,
-            id: recipeId
-        })
+            id: recipeId,
+            userId: user.uid
+    });
         console.log("success got data", response);
         // Write to DOM
         $('#recipeName').text(recipeTitle);

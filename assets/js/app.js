@@ -97,10 +97,10 @@ const setupHistory = (data) => {
 
         });
 
-        db.collection('users').doc(cred.user.uid).set({
-            title: recipeTitle,
-            id: recipeId
-          });
+        // db.collection('users').doc(cred.user.uid).set({
+        //     title: recipeTitle,
+        //     id: recipeId
+        //   });
 
     historyDisplay.html(html);
 } else {

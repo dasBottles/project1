@@ -13,7 +13,7 @@ auth.onAuthStateChanged(user => {
     }
   })
   
-
+//
   // signup
   const signupForm = document.querySelector('#signup-form');
   signupForm.addEventListener('submit', (e) => {

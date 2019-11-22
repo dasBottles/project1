@@ -1,62 +1,65 @@
 let
 recipeIngredients;
 shoppingBasket = [];
-searchInput = $("#foodSearch").val().trim();
 
 const getRecipe = () => {
-
-
-    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=5cb11de15150498f89bc9b764d488ff9");
+    let searchInput = $("#food").val().trim();
+    let xhr = $.get("https://api.spoonacular.com/recipes/random?number=1&tags=" + searchInput + "&apiKey=2d8d3142730b438384ef40435e90239b");
     xhr.done(function (response) {
+        //Variables
         let
         recipeTitle = response.recipes[0].title;
         recipeImg = response.recipes[0].image;
-        recipeServings = response.recipes[0].servings
+        recipeId = response.recipes[0].id
         recipeTime = response.recipes[0].readyInMinutes;
         recipeIngredients = response.recipes[0].extendedIngredients;
-        recipeInstructions = response.recipes[0].analyzedInstructions[0].steps[0].step;
+        recipeInstructions = response.recipes[0].analyzedInstructions[0].steps;
+        // Saving recipe to database
+        db.collection('history').add({
+            title: recipeTitle,
+            id: recipeId
+        })
         console.log("success got data", response);
-        console.log('recipeInstructions', recipeInstructions)
-
-
-
+        // Write to DOM
         $('#recipeName').text(recipeTitle);
         $('#recipeImg').attr('src', recipeImg);
         $('#recipeCard').css('display', 'block');
-        console.log(recipeTitle);
         listIngredients(recipeIngredients);
         parseInstructions(recipeInstructions);
     })
 };
 
-const parseInstructions = () => {
-    $(recipeInstructions).each((index, item) => {
-        $('#instructions').append("<li>" + item[0] + "</li>");
-        console.log(item)
-    })
-}
 
+// Write ingrediants to the DOM
 function listIngredients(ingredients) {
     let list = $("#ingredients-list")
     list.empty();
     ingredients.forEach(element => {
-        let item = [element.name, element.original]
-        console.log(item)
-            list.append("<p><label><input type='checkbox' class='add-item' data-item='" + item[0] +  "'/><span>" + item[0] );
+        let item = element.name
+        let item2 = element.original
+            list.append("<p><label><input type='checkbox' class='add-item' data-item='" + item +  "'/><span class='bigFont'>" + item2);
     });
 }
+
+// Write instructions to the DOM
+const parseInstructions = () => {
+    $(recipeInstructions).each((index, item) => {
+        $('#instructions').append("<p>Step " + item['number'] + ": " + "<label class='instruction'><span>" +item['step']);
+    });
+};
+
 
 
 $(document).ready(() => {
     // Runs API calls
-    $('#foodSearch').keyup(function () {
+    $('#food').keyup(function () {
         if (event.keyCode === 13) {
-            console.log('value', $("#foodSearch").val().trim())
+            console.log('value', $("#food").val().trim())
             getRecipe();
         }
     })
     $("#search-btn").on("click", function () {
-        console.log('value', $("#foodSearch").val().trim())
+        console.log('value', $("#food").val().trim())
         getRecipe()
     })
     // Adds ingredients to shopping list
@@ -65,13 +68,7 @@ $(document).ready(() => {
     })
 })
 
-//Hides the recipe if logo is clicked
-$('#logoBtn').on("click", function(){
-    event.preventDefault();
-    $('#recipeCard').css("display", "none")
-    $('.input-field').empty();
-});
-
+// Write recipeTitles to the History tab
 const historyDisplay = $('#recipeHistoryDisplay');
 // setup history
 const setupHistory = (data) => {
@@ -83,13 +80,27 @@ const setupHistory = (data) => {
             const li = `
             <ul class= 'collapsible'>
                 <li>
-                    <div class="collapsible-header grey lighten-4"> ${history.title} </div>
-                    <div class="collapsible-body white"> ${history.content} </div>        
+                    <div>${history.title} </div>       
                 </li>
             </ul>
             `;
-            html += li;
+
+            const btn = `
+            <ul>
+                <li>
+                    <a href="#" class="grey-text modal-trigger historyBtn bigFont" data-target="${history.title}" data-id='${doc.id}'>${history.title}</a>
+                </li>
+            </ul>
+            `
+            // html += li;
+            html += btn;
+
         });
+
+        db.collection('users').doc(cred.user.uid).set({
+            title: recipeTitle,
+            id: recipeId
+          });
 
     historyDisplay.html(html);
 } else {
@@ -130,4 +141,10 @@ const setupUI = (user) => {
     })
     }
 }
+
+//Hides the recipe if logo is clicked
+$('#logoBtn').on("click", function(){
+    event.preventDefault();
+    $('#recipeCard').css("display", "none");
+});
 

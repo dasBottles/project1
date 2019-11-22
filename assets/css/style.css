@@ -1,9 +1,22 @@
 body {
-    font-family: 'Indie Flower', cursive;
-    font-size: 3vw;
+    font-family: 'Quicksand', sans-serif;
 }
 
-img {
-    width: 20vw;
-    height: 45vh;
+
+.bigFont {
+    font-size: 1.5em !important;
 }
+
+.instruction {
+    font-size: 1.2em !important;
+    padding: 15px 0 15px 0 !important;
+}
+
+.rcorners2 {
+    border-radius: 15px;
+    border: 2px solid #73AD21;
+  }
+
+  .botBorder {
+    border-bottom: 2px solid gray;
+  }

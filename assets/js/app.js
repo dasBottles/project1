@@ -45,6 +45,7 @@ function listIngredients(ingredients) {
 
 // Write instructions to the DOM
 const parseInstructions = () => {
+    $('#instructions').empty();
     $(recipeInstructions).each((index, item) => {
         $('#instructions').append("<p>Step " + item['number'] + ": " + "<label class='instruction'><span>" +item['step']);
     });

@@ -1,4 +1,4 @@
-# Project 1 - Food App
+# Project 1 - What's for Dinner?
 
 ## Team
 
@@ -13,8 +13,8 @@
 
 ## Feature List
 
-- receipe
-- picture
+- recipe
+- image
 - youtube video
 
 ## APIs used
